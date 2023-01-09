@@ -1,30 +1,35 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LoginAction } from "../../redux/action/user";
-import {useHistory} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
-
   const dispatch = useDispatch();
-  const navigate = useHistory()
+  const navigate = useHistory();
+  const mess = useSelector((state) => state.UserReducer);
+  console.log("mess", mess);
+  if (mess) toast(mess.message);
 
   const onFinish = (values) => {
-   
     const user = {
       taiKhoan: values.username,
       matKhau: values.password,
     };
-   
     dispatch(LoginAction(user));
-    // navigate.push("home")
-   
+    setTimeout(()=>{
+
+      navigate.push("home");
+    },3000)
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
   return (
     <div>
+      <ToastContainer />
       <h1 style={{ textAlign: "center" }}>Dang nhap</h1>
       <Form
         name="basic"

@@ -4,6 +4,8 @@ import { Card } from "antd";
 import { Image } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { getCoursesAction } from "../../redux/action/courseAction";
 
@@ -18,6 +20,7 @@ export default function Home() {
 
   return (
     <div>
+
       <Row direction="vertical" gutter={[8, 8]}>
         {allCourses?.map((course, index) => {
           return (

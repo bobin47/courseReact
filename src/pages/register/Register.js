@@ -1,12 +1,20 @@
 import React from "react";
 import { RegisterAction } from "../../redux/action/user";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { Button, Checkbox, Form, Input, Select } from "antd";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import useSelection from "antd/es/table/hooks/useSelection";
 const { Option } = Select;
 
 export default function Register() {
   const dispatch = useDispatch();
+  const mess = useSelector((state) => state.UserReducer.messageRegister);
+
+  if (mess) {
+    toast(mess);
+  }
   const onFinish = (values) => {
     console.log(values);
     const user = {
@@ -23,8 +31,10 @@ export default function Register() {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
   return (
     <div>
+      <ToastContainer />
       <h1 style={{ textAlign: "center" }}>Dang ky</h1>
       <Form
         name="basic"

@@ -4,30 +4,56 @@ import {
   getAllUserAction,
   capNhatNguoiDungAction,
 } from "../../redux/action/courseAction";
-import { Space, Table, Tag, Button, Drawer, Form, Input, Select } from "antd";
+import {
+  Space,
+  Table,
+  Tag,
+  Button,
+  Drawer,
+  Form,
+  Input,
+  Select,
+  Modal,
+} from "antd";
 import { xoaNguoiDungAction } from "../../redux/action/courseAction";
 import AddUser from "../../components/addUser/AddUser";
 
 export default function User() {
   const { Option } = Select;
-
+  const [form] = Form.useForm();
   const dispatch = useDispatch();
   const { allUser } = useSelector((state) => state.CoursesReducer);
   const [open, setOpen] = useState(false);
   const [userDetail, setUserDetail] = useState({});
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+    console.log("hihi");
+    //
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   const onClose = () => {
     setOpen(false);
   };
 
-  const xoaNguoiDung = (taiKhoan) => {
-    dispatch(xoaNguoiDungAction(taiKhoan));
-  };
-
   const capNhatNguoiDung = (nguoidung) => {
     setOpen(true);
-    setUserDetail(nguoidung);
-    console.log(userDetail);
+    setUserDetail({ ...nguoidung });
+    console.log(nguoidung);
+    form.setFieldsValue({
+      taiKhoan: nguoidung?.taiKhoan,
+      matKhau: nguoidung?.matKhau,
+      hoTen: nguoidung?.hoTen,
+      soDT: nguoidung?.soDt,
+      maLoaiNguoiDung: nguoidung?.maLoaiNguoiDung,
+      maNhom: nguoidung?.maNhom,
+      email: nguoidung?.email,
+    });
   };
 
   const onFinish = (values) => {
@@ -39,9 +65,19 @@ export default function User() {
     console.log("Failed:", errorInfo);
   };
 
+  const xoaNguoiDung = (taiKhoan) => {
+    Modal.error({
+      title: "Do you want delete this user",
+      onOk() {
+        dispatch(xoaNguoiDungAction(taiKhoan));
+      },
+      onCancel() {},
+    });
+  };
+
   useEffect(() => {
     dispatch(getAllUserAction());
-  }, [userDetail]);
+  }, []);
 
   const columns = [
     {
@@ -68,11 +104,6 @@ export default function User() {
       title: "Email",
       dataIndex: "email",
       key: "email",
-    },
-    {
-      title: "SDT",
-      dataIndex: "soDt",
-      key: "soDt",
     },
     {
       title: "Action",
@@ -107,7 +138,7 @@ export default function User() {
 
   return (
     <div>
-      <AddUser title="Add User"/>
+      <AddUser title="Add User" />
       <Table columns={columns} dataSource={data} />
       <Drawer
         title="Thong Tin Nguoi Dung"
@@ -119,16 +150,15 @@ export default function User() {
           name="basic"
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
-          initialValues={{ remember: true }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
+          form={form}
         >
           <Form.Item
             label="Username"
             name="taiKhoan"
             rules={[{ required: true, message: "Please input your username!" }]}
-            initialValue={userDetail?.taiKhoan}
           >
             <Input />
           </Form.Item>
@@ -145,16 +175,14 @@ export default function User() {
             label="Ho ten"
             name="hoTen"
             rules={[{ required: true, message: "Please input your password!" }]}
-            initialValue={userDetail?.hoTen}
           >
-            <Input />
+            <Input value={"hihi"} />
           </Form.Item>
 
           <Form.Item
             label="SDT"
             name="soDT"
             rules={[{ required: true, message: "Please input your password!" }]}
-            initialValue={userDetail?.soDt}
           >
             <Input />
           </Form.Item>
@@ -163,7 +191,6 @@ export default function User() {
             label="maLoaiNguoiDung"
             name="maLoaiNguoiDung"
             rules={[{ required: true, message: "Please input your password!" }]}
-            initialValue={userDetail?.maLoaiNguoiDung}
           >
             <Input />
           </Form.Item>
@@ -172,7 +199,6 @@ export default function User() {
             label="maNhom"
             name="maNhom"
             rules={[{ required: true, message: "Please input your password!" }]}
-            // initialValue={userDetail?.maNhom}
           >
             <Select
               placeholder="Select a option and change input text above"
@@ -188,7 +214,6 @@ export default function User() {
             label="Email"
             name="email"
             rules={[{ required: true, message: "Please input your password!" }]}
-            initialValue={userDetail?.email}
           >
             <Input />
           </Form.Item>
@@ -200,6 +225,7 @@ export default function User() {
           </Form.Item>
         </Form>
       </Drawer>
+    
     </div>
   );
 }

@@ -1,6 +1,4 @@
-import { convertLegacyProps } from "antd/es/button/button";
 import axios from "axios";
-import { getCourseService } from "../../service/getCourse";
 
 export const getCoursesAction = async (dispatch) => {
   try {

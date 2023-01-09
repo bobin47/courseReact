@@ -10,13 +10,16 @@ export const LoginAction = (user) => {
         data: user,
       });
       console.log(result);
+      dispatch({ type: "LOGIN_SUCCESS", payload: "dang nhap thanh cong" });
+
       localStorage.setItem("userInfo", JSON.stringify(result.data));
       localStorage.setItem(
         "accessToken",
         JSON.stringify(result.data.accessToken)
       );
     } catch (error) {
-      console.log(error);
+      dispatch({ type: "LOGIN_FAIL", payload: "dang nhap that bai" });
+      console.log("error", error);
     }
   };
 };
@@ -24,12 +27,16 @@ export const LoginAction = (user) => {
 export const RegisterAction = (user) => {
   return async (dispatch) => {
     try {
-      const result = await userService.register(user);
+      const result = await axios.post(
+        "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy",
+        user
+      );
       console.log(result.data);
+      dispatch({ type: "REGISTER_SUCCESS", payload: "dang ky thanh cong" });
     } catch (error) {
+      dispatch({ type: "REGISTER_FAIL", payload: "dang ky that bai" });
       console.log(error);
+
     }
   };
 };
-
-
