@@ -23,6 +23,7 @@ export default function Course() {
   }, []);
 
   const xoaKhoahoc = (value) => {
+    console.log(value);
     dispatch(xoaKhoaHocAction(value));
   };
 
@@ -102,7 +103,7 @@ export default function Course() {
           <Button
             type="primary"
             danger
-            onClick={() => xoaKhoahoc(record.maKhoahoc)}
+            onClick={() => xoaKhoahoc(record.maKhoaHoc)}
           >
             xoa
           </Button>

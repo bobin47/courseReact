@@ -2,6 +2,7 @@ const stateDefault = {
   allCourses: null,
   detailCourse: null,
   allUser: null,
+  message: null,
 };
 
 export const CoursesReducer = (state = stateDefault, action) => {
@@ -26,6 +27,54 @@ export const CoursesReducer = (state = stateDefault, action) => {
       console.log(state.detailCourse);
 
       return { ...state };
+    }
+
+    case "UP_DATE_USER_SUCCESS": {
+      return { ...state, message: action.payload };
+    }
+
+    case "UP_DATE_USER_FAIL": {
+      return { ...state, message: action.payload };
+    }
+
+    case "DELETE_USER_SUCCESS": {
+      return { ...state, message: action.payload };
+    }
+
+    case "DELETE_USER_FAIL": {
+      return { ...state, message: action.payload };
+    }
+
+    case "ADD_USER_SUCCESS": {
+      return { ...state, message: action.payload };
+    }
+
+    case "ADD_USER_FAIL": {
+      return { ...state, message: action.payload };
+    }
+
+    case "DELETE_COURSE_SUCCESS": {
+      return { ...state, message: action.payload };
+    }
+
+    case "DELETE_COURSE_FAIL": {
+      return { ...state, message: action.payload };
+    }
+
+    case "UPDATE_COURSE_SUCCESS": {
+      return { ...state, message: action.payload };
+    }
+
+    case "UPDATE_COURSE_FAIL": {
+      return { ...state, message: action.payload };
+    }
+
+    case "ADD_COURSE_SUCCESS": {
+      return { ...state, message: action.payload };
+    }
+
+    case "ADD_COURSE_FAIL": {
+      return { ...state, message: action.payload };
     }
 
     default:

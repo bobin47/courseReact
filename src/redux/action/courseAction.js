@@ -54,28 +54,6 @@ export const dangKyKhoaHocAction = (value) => {
   };
 };
 
-export const xoaKhoaHocAction = (maKhoaHoc) => {
-  return async (dispatch) => {
-    try {
-      const a = localStorage.getItem("accessToken").length;
-      const result = await axios.delete(
-        `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${maKhoaHoc}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage
-              .getItem("accessToken")
-              .slice(1, a - 1)}`,
-          },
-        }
-      );
-
-      console.log(result);
-    } catch (error) {
-      console.log(error.response);
-    }
-  };
-};
-
 export const getAllUserAction = () => {
   return async (dispatch) => {
     try {
@@ -108,9 +86,16 @@ export const xoaNguoiDungAction = (taiKhoan) => {
           },
         }
       );
-
+      dispatch({
+        type: "DELETE_USER_SUCCESS",
+        payload: "Xoa nguoi dung thanh cong",
+      });
       console.log(result);
     } catch (error) {
+      dispatch({
+        type: "DELETE_USER_FAIL",
+        payload: "Xoa nguoi khong dung thanh cong",
+      });
       console.log(error);
     }
   };
@@ -131,9 +116,16 @@ export const capNhatNguoiDungAction = (value) => {
           },
         }
       );
-
+      dispatch({
+        type: "UP_DATE_USER_SUCCESS",
+        payload: "cap nhat nguoi dung thanh cong",
+      });
       console.log(result);
     } catch (error) {
+      dispatch({
+        type: "UP_DATE_USER_FAIL",
+        payload: "cap nhat nguoi khong dung thanh cong",
+      });
       console.log(error);
     }
   };
@@ -155,8 +147,16 @@ export const themNguoiDungAction = (value) => {
           },
         }
       );
+      dispatch({
+        type: "ADD_USER_SUCCESS",
+        payload: "Them nguoi dung thanh cong",
+      });
       console.log(result);
     } catch (error) {
+      dispatch({
+        type: "ADD_USER_FAIL",
+        payload: "Them nguoi khong dung thanh cong",
+      });
       console.log(error);
     }
   };
@@ -178,8 +178,16 @@ export const themKhoaHocAction = (value) => {
           },
         }
       );
+      dispatch({
+        type: "ADD_COURSE_SUCCESS",
+        payload: "Them khoa hoc thanh cong",
+      });
       console.log(result);
     } catch (error) {
+      dispatch({
+        type: "ADD_COURSE_FAIL",
+        payload: "Them khoa hoc khong thanh cong",
+      });
       console.log(error);
     }
   };
@@ -192,9 +200,47 @@ export const CapNhatKhoaHoc = (value) => {
         "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/CapNhatKhoaHoc",
         value
       );
+      dispatch({
+        type: "UPDATE_COURSE_SUCCESS",
+        payload: "Cap nhat khoa hoc thanh cong",
+      });
       console.log(result);
     } catch (error) {
+      dispatch({
+        type: "UPDATE_COURSE_FAIL",
+        payload: "Cap nhat khoa hoc thanh cong",
+      });
       console.log(error);
+    }
+  };
+};
+
+export const xoaKhoaHocAction = (maKhoaHoc) => {
+  console.log(maKhoaHoc);
+  return async (dispatch) => {
+    try {
+      const a = localStorage.getItem("accessToken").length;
+      const result = await axios.delete(
+        `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${maKhoaHoc}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage
+              .getItem("accessToken")
+              .slice(1, a - 1)}`,
+          },
+        }
+      );
+      dispatch({
+        type: "DELETE_COURSE_SUCCESS",
+        payload: "Xoa khoa hoc thanh cong",
+      });
+      // console.log(result);
+    } catch (error) {
+      dispatch({
+        type: "DELETE_COURSE_FAIL",
+        payload: "Xoa khoa hoc khong thanh cong",
+      });
+      console.log(error.response);
     }
   };
 };
