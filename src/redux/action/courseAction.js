@@ -184,3 +184,17 @@ export const themKhoaHocAction = (value) => {
     }
   };
 };
+
+export const CapNhatKhoaHoc = (value) => {
+  return async (dispatch) => {
+    try {
+      const result = await axios.put(
+        "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/CapNhatKhoaHoc",
+        value
+      );
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
