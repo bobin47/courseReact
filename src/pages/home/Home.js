@@ -4,7 +4,6 @@ import { Card } from "antd";
 import { Image } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { getCoursesAction } from "../../redux/action/courseAction";
@@ -16,10 +15,11 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getCoursesAction);
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
+      <h1 style={{marginBottom:30, textAlign:"center",fontSize:30}}>Khoá học</h1>
 
       <Row direction="vertical" gutter={[8, 8]}>
         {allCourses?.map((course, index) => {
@@ -32,15 +32,12 @@ export default function Home() {
                 }}
               >
                 <Image width={200} src={course.hinhAnh} />
-                {/* <p>
+                <p>
                   {course.moTa.length > 20
                     ? course.moTa.slice(0, 30) + "..."
                     : course.moTa}
-                </p> */}
-
-                <p>{course.moTa}</p>
-
-                <Link to={`/detail/${course.maKhoaHoc}`}>Chi tiet</Link>
+                </p>
+                <Link to={`/detail/${course.maKhoaHoc}`}>Chi Tiết khoá học</Link>
               </Card>
             </Col>
           );

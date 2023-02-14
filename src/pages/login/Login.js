@@ -24,13 +24,15 @@ export default function Login() {
       navigate.push("home");
     },3000)
   };
+
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+  
   return (
     <div>
       <ToastContainer />
-      <h1 style={{ textAlign: "center" }}>Dang nhap</h1>
+      <h1 style={{ textAlign: "center" }}>Đăng nhập</h1>
       <Form
         name="basic"
         labelCol={{
@@ -47,12 +49,12 @@ export default function Login() {
         autoComplete="off"
       >
         <Form.Item
-          label="Username"
+          label="Tài khoản"
           name="username"
           rules={[
             {
               required: true,
-              message: "Please input your username!",
+              message: "Tài khoản là bắc buộc!",
             },
           ]}
         >
@@ -60,12 +62,12 @@ export default function Login() {
         </Form.Item>
 
         <Form.Item
-          label="Password"
+          label="Mật khẩu"
           name="password"
           rules={[
             {
               required: true,
-              message: "Please input your password!",
+              message: "Mật khẩu là bắc buộc!",
             },
           ]}
         >

@@ -10,7 +10,7 @@ export const LoginAction = (user) => {
         data: user,
       });
       console.log(result);
-      dispatch({ type: "LOGIN_SUCCESS", payload: "dang nhap thanh cong" });
+      await dispatch({ type: "LOGIN_SUCCESS", payload: {message:"dang nhap thanh cong" ,user:result.data}});
 
       localStorage.setItem("userInfo", JSON.stringify(result.data));
       localStorage.setItem(

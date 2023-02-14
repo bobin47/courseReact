@@ -11,7 +11,6 @@ import Admin from "./pages/admin/Admin";
 
 import { Layout, Menu, theme } from "antd";
 import SearchHeader from "./components/SearchHeader/SearchHeader";
-import Logout from "./components/Logout/Logout";
 const { Header, Sider, Content } = Layout;
 export const history = createBrowserHistory();
 
@@ -38,7 +37,7 @@ const App = () => {
           bottom: 0,
         }}
       >
-        <h1>logo</h1>
+        <h1 style={{color:"white", fontSize:20,textAlign:"center"}}>Course</h1>
         <Menu
           onClick={({ key }) => {
             if (key === "logout") {
@@ -93,6 +92,7 @@ const App = () => {
             <Route path="/register" component={Register} />
             <Route path="/detail/:id" component={Detail} />
             <Route path="/admin" component={Admin} />
+            <Route path="/*"/>
           </Switch>
         </Content>
       </Layout>

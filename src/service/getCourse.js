@@ -6,7 +6,7 @@ export class GetCourseService extends baseService {
   }
 
   getCourse = () => {
-    return this.get("/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP03");
+    return this.get("/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01");
   };
 
   getCourseDetail = (id) => {

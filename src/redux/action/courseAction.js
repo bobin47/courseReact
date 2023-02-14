@@ -88,13 +88,13 @@ export const xoaNguoiDungAction = (taiKhoan) => {
       );
       dispatch({
         type: "DELETE_USER_SUCCESS",
-        payload: "Xoa nguoi dung thanh cong",
+        payload: "Xoá Người dùng thành công",
       });
       console.log(result);
     } catch (error) {
       dispatch({
         type: "DELETE_USER_FAIL",
-        payload: "Xoa nguoi khong dung thanh cong",
+        payload: "Xoá Người dùng không thành công",
       });
       console.log(error);
     }
@@ -118,13 +118,13 @@ export const capNhatNguoiDungAction = (value) => {
       );
       dispatch({
         type: "UP_DATE_USER_SUCCESS",
-        payload: "cap nhat nguoi dung thanh cong",
+        payload: "Cập nhật người dùng thành công",
       });
       console.log(result);
     } catch (error) {
       dispatch({
         type: "UP_DATE_USER_FAIL",
-        payload: "cap nhat nguoi khong dung thanh cong",
+        payload: "Cập nhật người dùng không thành công",
       });
       console.log(error);
     }
@@ -149,13 +149,13 @@ export const themNguoiDungAction = (value) => {
       );
       dispatch({
         type: "ADD_USER_SUCCESS",
-        payload: "Them nguoi dung thanh cong",
+        payload: "Thêm người dùng thành công",
       });
       console.log(result);
     } catch (error) {
       dispatch({
         type: "ADD_USER_FAIL",
-        payload: "Them nguoi khong dung thanh cong",
+        payload: "Thêm người dùng không thành công",
       });
       console.log(error);
     }
@@ -180,13 +180,13 @@ export const themKhoaHocAction = (value) => {
       );
       dispatch({
         type: "ADD_COURSE_SUCCESS",
-        payload: "Them khoa hoc thanh cong",
+        payload: "Thêm khoá học thành công",
       });
       console.log(result);
     } catch (error) {
       dispatch({
         type: "ADD_COURSE_FAIL",
-        payload: "Them khoa hoc khong thanh cong",
+        payload: "Thêm khoá học không thành công",
       });
       console.log(error);
     }
@@ -202,13 +202,13 @@ export const CapNhatKhoaHoc = (value) => {
       );
       dispatch({
         type: "UPDATE_COURSE_SUCCESS",
-        payload: "Cap nhat khoa hoc thanh cong",
+        payload: "Cập nhật khoá học thành công",
       });
       console.log(result);
     } catch (error) {
       dispatch({
         type: "UPDATE_COURSE_FAIL",
-        payload: "Cap nhat khoa hoc thanh cong",
+        payload: "Cập nhật khoá học không thành công",
       });
       console.log(error);
     }
@@ -232,13 +232,13 @@ export const xoaKhoaHocAction = (maKhoaHoc) => {
       );
       dispatch({
         type: "DELETE_COURSE_SUCCESS",
-        payload: "Xoa khoa hoc thanh cong",
+        payload: "Xoá khoá học thành công",
       });
       // console.log(result);
     } catch (error) {
       dispatch({
         type: "DELETE_COURSE_FAIL",
-        payload: "Xoa khoa hoc khong thanh cong",
+        payload: "Xoá khoá học không thành công",
       });
       console.log(error.response);
     }

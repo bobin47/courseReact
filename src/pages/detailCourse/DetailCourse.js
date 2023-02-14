@@ -26,17 +26,17 @@ export default function DetailCourse() {
 
   return (
     <div>
-      <h1>Detail</h1>
+      <h1 style={{marginBottom:30, textAlign:"center",fontSize:30}}>Chi tiết Khoá học</h1>
+
       <Row gutter={16}>
         <Col span={6} push={18}>
-          <Card title="Thong Tin Khoa hoc" style={{ width: 300 }}>
-            <p>Ten Khoa Hoc: {detailCourse?.tenKhoaHoc}</p>
-            <p>Luot xem: {detailCourse?.luotXem}</p>
-            <p>Mo ta: {detailCourse?.moTa}</p>
-            <p>ngay tao: {detailCourse?.ngayTao}</p>
-
+          <Card title="Thông tin khoá học" style={{ width: 300 }}>
+            <p>Tên khoá học: {detailCourse?.tenKhoaHoc}</p>
+            <p>Lượt xem: {detailCourse?.luotXem}</p>
+            <p>Mô tả: {detailCourse?.moTa}</p>
+            <p>Ngày tạo: {detailCourse?.ngayTao}</p>
             <Button type="primary" shape="round" onClick={dangKyKhoaHoc}>
-              Dang ky Khoa hoc
+              Đăng ký khoá học
             </Button>
           </Card>
         </Col>

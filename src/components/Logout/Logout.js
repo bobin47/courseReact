@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Dropdown, Space } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Logout() {
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  
   const navigate = useHistory();
   const [itemMenu, SetItemMenu] = useState();
 
