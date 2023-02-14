@@ -4,12 +4,16 @@ import { useParams } from "react-router-dom";
 import { getDetailCourseAction } from "../../redux/action/courseAction";
 import { Col, Row, Image, Card, Button } from "antd";
 import { dangKyKhoaHocAction } from "../../redux/action/courseAction";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function DetailCourse() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { detailCourse } = useSelector((state) => state.CoursesReducer);
-  console.log(detailCourse);
+  const mess = useSelector((state) => state.UserReducer);
+  console.log(mess)
+  if (mess) toast(mess.message);
+  
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
   useEffect(() => {
@@ -26,6 +30,8 @@ export default function DetailCourse() {
 
   return (
     <div>
+      <ToastContainer />
+      
       <h1 style={{marginBottom:30, textAlign:"center",fontSize:30}}>Chi tiết Khoá học</h1>
 
       <Row gutter={16}>

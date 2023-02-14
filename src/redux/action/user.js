@@ -10,7 +10,7 @@ export const LoginAction = (user) => {
         data: user,
       });
       console.log(result);
-      await dispatch({ type: "LOGIN_SUCCESS", payload: {message:"dang nhap thanh cong" ,user:result.data}});
+      await dispatch({ type: "LOGIN_SUCCESS", payload: {message:"Đăng nhập thành công" ,user:result.data}});
 
       localStorage.setItem("userInfo", JSON.stringify(result.data));
       localStorage.setItem(
@@ -18,7 +18,7 @@ export const LoginAction = (user) => {
         JSON.stringify(result.data.accessToken)
       );
     } catch (error) {
-      dispatch({ type: "LOGIN_FAIL", payload: "dang nhap that bai" });
+      dispatch({ type: "LOGIN_FAIL", payload: "Đăng nhập không thành công" });
       console.log("error", error);
     }
   };
@@ -32,9 +32,9 @@ export const RegisterAction = (user) => {
         user
       );
       console.log(result.data);
-      dispatch({ type: "REGISTER_SUCCESS", payload: "dang ky thanh cong" });
+      dispatch({ type: "REGISTER_SUCCESS", payload: "Đăng ký thành công" });
     } catch (error) {
-      dispatch({ type: "REGISTER_FAIL", payload: "dang ky that bai" });
+      dispatch({ type: "REGISTER_FAIL", payload: "Đăng ký không thành công" });
       console.log(error);
 
     }

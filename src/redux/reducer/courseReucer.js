@@ -76,7 +76,6 @@ export const CoursesReducer = (state = stateDefault, action) => {
     case "ADD_COURSE_FAIL": {
       return { ...state, message: action.payload };
     }
-
     default:
       return { ...state };
   }

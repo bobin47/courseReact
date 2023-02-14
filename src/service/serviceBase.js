@@ -13,7 +13,7 @@ export class baseService {
         config.headers = {
           ...config.headers,
           accept: "application/json",
-          // TokenCyberSoft: TokenCyberSoft,
+          TokenCyberSoft: TokenCyberSoft,
           Authorization: `${
             localStorage.getItem(TOKEN)
               ? "Bearer " + localStorage.getItem(TOKEN)

@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Input } from "antd";
 import Logout from "../Logout/Logout";
+import { useSelector } from "react-redux";
 const { Search } = Input;
 
 export default function SearchHeader() {
   const onSearch = (value) => console.log(value);
   const ischeckLogout = localStorage.getItem("userInfo");
-  console.log(ischeckLogout);
-  useEffect(() => {}, [ischeckLogout]);
+  const {user} = useSelector((state)=>state.UserReducer)
   return (
     <div
       style={{

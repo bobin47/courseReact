@@ -47,9 +47,12 @@ export const dangKyKhoaHocAction = (value) => {
             .slice(1, a - 1)}`,
         },
       });
-      console.log(result);
+      console.log("result",result);
+      dispatch({type:"REGISTER_COURSE_SUCCESS",payload: "Đăng ký thành công khoá học",})
     } catch (error) {
       console.log(error.response);
+      dispatch({type:"REGISTER_COURSE_FAIL",payload: "Đăng ký không thành công khoá học",})
+        
     }
   };
 };

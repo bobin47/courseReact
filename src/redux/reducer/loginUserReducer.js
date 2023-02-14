@@ -22,6 +22,14 @@ export const UserReducer = (state = stateDefault, action) => {
       return { ...state, messageRegister: action.payload.message };
     }
 
+    case "REGISTER_COURSE_SUCCESS":{
+     return {...state, message:action.payload}
+    }
+
+    case "REGISTER_COURSE_FAIL":{
+      return {...state,message:action.payload}
+     }
+
     default:
       return { ...state };
   }

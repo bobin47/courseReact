@@ -8,7 +8,6 @@ authFetch.interceptors.request.use(
         console.log(typeof accessToken);
     
         if (accessToken) {
-            
             request.headers['Authorization'] = `Bearer ${accessToken}`;
             // request.headers['Authorization'] = `Bearer ${accessToken}`;
         }

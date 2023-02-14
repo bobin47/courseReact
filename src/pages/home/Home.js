@@ -20,7 +20,6 @@ export default function Home() {
   return (
     <div>
       <h1 style={{marginBottom:30, textAlign:"center",fontSize:30}}>Khoá học</h1>
-
       <Row direction="vertical" gutter={[8, 8]}>
         {allCourses?.map((course, index) => {
           return (
